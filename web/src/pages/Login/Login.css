@@ -1,0 +1,107 @@
+/* make the container take the full viewport and center content */
+#login-card-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center; /* vertical centering */
+  justify-content: center; /* horizontal centering */
+  box-sizing: border-box;
+  padding: 0 2rem;
+}
+
+#login-card {
+  background: #fff;
+  padding: 2rem 4rem;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  width: 75%;
+}
+
+#login-card h2 {
+  text-align: center;
+  color: red;
+  margin-bottom: 1.5rem;
+}
+
+#login-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+#login-card input {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  width: 100%;
+}
+
+#login-card .input-error {
+  color: red;
+}
+
+#password-container {
+  position: relative;
+}
+
+#password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  margin-right: 1rem;
+}
+
+#login-btn-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+#login-card button {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 50px;
+  background-color: green;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 50%;
+}
+
+#login-card-footer {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* Tablet (≤ 768px) */
+@media (max-width: 768px) {
+  .container {
+    max-width: 90%; /* narrower */
+    padding: 0 1rem;
+  }
+}
+
+/* Mobile (≤ 480px) */
+@media (max-width: 480px) {
+  #login-card-container {
+    padding: 0 1rem;
+  }
+
+  #login-card {
+    padding: 2rem 2rem;
+    width: 100%;
+  }
+
+  #login-card-footer {
+    display: flex;
+    justify-content: space-between;
+  }
+}
