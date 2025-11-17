@@ -2,6 +2,7 @@ import "./Login.css";
 import showPasswordIcon from "../../assets/show_password.png";
 import hidePasswordIcon from "../../assets/hide_password.png";
 import { useState } from "react";
+import LoginHeader from "./LoginHeader";
 
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -66,8 +67,9 @@ function Login() {
 
   return (
     <div id="login-page-container">
-      <h1>Header</h1>
-      <div id="login-card-container">
+      <LoginHeader />
+
+      <section id="login-card-container">
         <div id="login-card">
           <h2>Log in</h2>
           <form onSubmit={handleSubmit}>
@@ -113,7 +115,22 @@ function Login() {
             <a href="/forgot-password">Forgotten password?</a>
           </div>
         </div>
-      </div>
+      </section>
+
+      <footer id="login-footer">
+        <div id="login-footer-links">
+          <h2>123 Fakturera</h2>
+
+          <div id="login-footer-right">
+            <a href="#">Home</a>
+            <a href="#">Order</a>
+            <a href="#">Our Customers</a>
+          </div>
+        </div>
+        <p id="login-footer-copy">
+          &copy; 2024 Your Company. All rights reserved.
+        </p>
+      </footer>
     </div>
   );
 }

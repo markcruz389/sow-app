@@ -87,6 +87,37 @@
   gap: 2rem;
 }
 
+#login-footer {
+  color: white;
+  padding: 0 1rem;
+}
+
+#login-footer-copy {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1rem;
+}
+
+#login-footer-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid white;
+  padding-bottom: 1rem;
+}
+
+#login-footer-links h2 {
+  display: flex;
+  flex-grow: 1;
+}
+
+#login-footer-right {
+  display: flex;
+  gap: 2rem;
+}
+
 /* Tablet (≤ 768px) */
 @media (max-width: 768px) {
   .container {
@@ -109,5 +140,11 @@
   #login-card-footer {
     display: flex;
     justify-content: space-between;
+  }
+
+  #login-footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
   }
 }

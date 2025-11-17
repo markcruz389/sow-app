@@ -1,0 +1,153 @@
+/* HEADER BASE */
+#login-header {
+  width: 100%;
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+}
+
+#login-header-content {
+  max-width: 1400px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* LOGO (hidden on mobile) */
+#login-header-logo {
+  display: flex;
+  justify-content: start;
+  flex-grow: 1;
+}
+
+#login-header-logo img {
+  height: 35px;
+}
+
+#login-header-right {
+  display: flex;
+  justify-content: flex-end;
+  gap: 30px;
+  flex-grow: 1;
+}
+
+/* NAV (desktop visible, mobile hidden) */
+#login-nav {
+  display: flex;
+  gap: 40px;
+}
+
+#login-nav a {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 1rem;
+}
+
+#login-nav a:hover {
+  background-color: #8cc0ff;
+}
+
+/* MOBILE NAV (dropdown) */
+#login-nav.open {
+  position: absolute;
+  top: 70px;
+  left: 20px;
+  background: white;
+  flex-direction: column;
+  gap: 2rem;
+  width: 200px;
+  transform: translateY(0);
+}
+
+#login-nav.open a {
+  color: black;
+}
+
+/* LANGUAGE SELECTOR */
+#login-lang-wrapper {
+  position: relative;
+}
+
+#login-lang-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+#login-lang-button img {
+  width: 24px;
+}
+
+#login-lang-button p {
+  color: white;
+}
+
+/* DROPDOWN */
+#login-lang-dropdown {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  background: white;
+  color: black;
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  width: 100px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+#login-lang-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 0;
+  cursor: pointer;
+}
+
+#login-lang-option img {
+  width: 24px;
+}
+
+/* HAMBURGER */
+#login-hamburger {
+  width: 30px;
+  height: 22px;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.bar {
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  transition: 0.3s;
+}
+
+/* MOBILE and TABLET */
+@media (max-width: 1024px) {
+  /* show hamburger */
+  #login-hamburger {
+    display: flex;
+  }
+
+  /* hide logo */
+  #login-header-logo {
+    display: none;
+  }
+
+  /* hide nav unless opened */
+  #login-nav {
+    display: none;
+  }
+
+  #login-nav.open {
+    display: flex;
+  }
+}
