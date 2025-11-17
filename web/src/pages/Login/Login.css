@@ -1,8 +1,14 @@
-/* make the container take the full viewport and center content */
-#login-card-container {
-  width: 100%;
+#login-page-container {
+  background-image: url("/login-bg.jpg");
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
+}
+
+/* make the container take the full viewport and center content */
+#login-card-container {
+  display: flex;
+  flex-grow: 1;
   align-items: center; /* vertical centering */
   justify-content: center; /* horizontal centering */
   box-sizing: border-box;

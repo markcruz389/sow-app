@@ -65,7 +65,7 @@ function Login() {
   const passwordToggleIcon = showPassword ? hidePasswordIcon : showPasswordIcon;
 
   return (
-    <div>
+    <div id="login-page-container">
       <h1>Header</h1>
       <div id="login-card-container">
         <div id="login-card">
