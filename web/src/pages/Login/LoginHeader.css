@@ -1,4 +1,3 @@
-/* HEADER BASE */
 #login-header {
   width: 100%;
   padding: 1rem;
@@ -9,9 +8,8 @@
 }
 
 #login-header-content {
-  max-width: 1400px;
+  width: 75%;
   margin: 0 auto;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -31,6 +29,7 @@
 #login-header-right {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   gap: 30px;
   flex-grow: 1;
 }
@@ -61,7 +60,6 @@
   flex-direction: column;
   gap: 2rem;
   width: 200px;
-  transform: translateY(0);
 }
 
 #login-nav.open a {
@@ -135,6 +133,11 @@
   /* show hamburger */
   #login-hamburger {
     display: flex;
+    padding: 0;
+  }
+
+  #login-header-content {
+    width: 90%;
   }
 
   /* hide logo */

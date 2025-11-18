@@ -3,6 +3,8 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* make the container take the full viewport and center content */
@@ -20,7 +22,7 @@
   padding: 2rem 4rem;
   border-radius: 20px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-  width: 75%;
+  width: 660px;
 }
 
 #login-card h2 {
@@ -89,7 +91,11 @@
 
 #login-footer {
   color: white;
-  padding: 0 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 #login-footer-copy {
@@ -106,6 +112,7 @@
   margin-bottom: 1rem;
   border-bottom: 1px solid white;
   padding-bottom: 1rem;
+  width: 75%;
 }
 
 #login-footer-links h2 {
@@ -120,8 +127,7 @@
 
 /* Tablet (≤ 768px) */
 @media (max-width: 768px) {
-  .container {
-    max-width: 90%; /* narrower */
+  #login-card-container {
     padding: 0 1rem;
   }
 }
@@ -146,5 +152,6 @@
     display: flex;
     flex-direction: column;
     gap: 0;
+    width: 90%;
   }
 }

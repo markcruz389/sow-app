@@ -31,7 +31,7 @@ export default function Header() {
         </div>
 
         <div id="login-header-right">
-          <nav id={`login-nav`} className={open ? "nav open" : "nav"}>
+          <nav id="login-nav" className={open ? "open" : ""}>
             <a href="#">{translations["nav.home"]}</a>
             <a href="#">{translations["nav.order"]}</a>
             <a href="#">{translations["nav.our-customers"]}</a>
