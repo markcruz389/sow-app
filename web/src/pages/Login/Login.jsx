@@ -3,6 +3,8 @@ import showPasswordIcon from "../../assets/show_password.png";
 import hidePasswordIcon from "../../assets/hide_password.png";
 import { useState } from "react";
 import LoginHeader from "./LoginHeader";
+import { useNavigate } from "react-router";
+import { useAuthRedirect } from "../../hooks/useAuthRedirect.jsx";
 
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -13,6 +15,7 @@ function isValidPassword(password) {
 }
 
 function Login() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -23,7 +26,9 @@ function Login() {
   });
   const [showPassword, setShowPassword] = useState(false);
 
-  function handleChange(e) {
+  useAuthRedirect({ redirectIfAuthenticated: true });
+
+  async function handleChange(e) {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -31,7 +36,7 @@ function Login() {
     }));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
     const { email, password } = formData;
@@ -54,6 +59,44 @@ function Login() {
         ...prev,
         password: "The field must be at least 4 characters long",
       }));
+      return;
+    }
+
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+
+    if (res.status === 401 || res.status === 400) {
+      setFormError((prev) => ({
+        ...prev,
+        password: "Invalid email or password",
+      }));
+      return;
+    }
+
+    if (res.status === 500) {
+      setFormError((prev) => ({
+        ...prev,
+        password: "Server error. Please try again later.",
+      }));
+      return;
+    }
+
+    if (!res.ok) {
+      setFormError((prev) => ({
+        ...prev,
+        password: "An unexpected error occurred. Please try again.",
+      }));
+      return;
+    }
+
+    const data = await res.json();
+
+    if (data.token) {
+      localStorage.setItem("authToken", data.token);
+      navigate("/price-list");
       return;
     }
   }

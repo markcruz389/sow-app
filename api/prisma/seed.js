@@ -12,8 +12,8 @@ function hashPassword(password, salt) {
 }
 
 async function main() {
-  const email = "test@example.com";
-  const password = "password123";
+  const email = process.env.TEST_EMAIL;
+  const password = process.env.TEST_PASSWORD;
 
   const salt = generateSalt();
   const passwordHash = hashPassword(password, salt);
