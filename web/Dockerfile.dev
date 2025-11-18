@@ -1,0 +1,21 @@
+FROM node:25-alpine
+
+# set working dir
+WORKDIR /webapp
+
+# enable corepack and install pnpm
+RUN npm install -g pnpm
+
+# copy dependency manifests first for better caching
+COPY package*.json pnpm-lock.yaml* ./
+
+# install dependencies (dev deps included)
+RUN pnpm install --frozen-lockfile --silent
+
+# copy app source
+COPY . .
+
+EXPOSE 5174
+
+# start dev server (expects a "dev" script in package.json)
+CMD ["pnpm", "run", "dev"]

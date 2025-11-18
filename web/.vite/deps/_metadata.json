@@ -1,0 +1,31 @@
+{
+  "hash": "f5d73443",
+  "configHash": "b48851ea",
+  "lockfileHash": "b0616f96",
+  "browserHash": "39f44a7a",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/.pnpm/react@19.2.0/node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "03622b01",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/.pnpm/react-dom@19.2.0_react@19.2.0/node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "ff188c0a",
+      "needsInterop": true
+    },
+    "react-router": {
+      "src": "../../node_modules/.pnpm/react-router@7.9.6_react-dom@19.2.0_react@19.2.0__react@19.2.0/node_modules/react-router/dist/development/index.mjs",
+      "file": "react-router.js",
+      "fileHash": "efc83396",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-FGFWJ2AP": {
+      "file": "chunk-FGFWJ2AP.js"
+    }
+  }
+}
