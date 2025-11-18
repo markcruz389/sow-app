@@ -5,6 +5,7 @@ import { useState } from "react";
 import LoginHeader from "./LoginHeader";
 import { useNavigate } from "react-router";
 import { useAuthRedirect } from "../../hooks/useAuthRedirect.jsx";
+import { useTranslation } from "../../providers/TranslationProvider.jsx";
 
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -16,6 +17,7 @@ function isValidPassword(password) {
 
 function Login() {
   const navigate = useNavigate();
+  const { translations } = useTranslation();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -114,13 +116,15 @@ function Login() {
 
       <section id="login-card-container">
         <div id="login-card">
-          <h2>Log in</h2>
+          <h2>{translations["login.log-in"]}</h2>
           <form onSubmit={handleSubmit}>
             <div id="email-container">
-              <p className="input-label">Enter your email address</p>
+              <p className="input-label">
+                {translations["login.enter-your-email-address"]}
+              </p>
               <input
                 type="text"
-                placeholder="Email address"
+                placeholder={translations["login.email-address"]}
                 name="email"
                 value={formData.email}
                 onChange={(e) => handleChange(e)}
@@ -130,11 +134,13 @@ function Login() {
               )}
             </div>
             <div>
-              <p className="input-label">Enter your password</p>
+              <p className="input-label">
+                {translations["login.enter-your-password"]}
+              </p>
               <div id="password-container">
                 <input
                   type={passwordInputType}
-                  placeholder="Password"
+                  placeholder={translations["login.password"]}
                   name="password"
                   value={formData.password}
                   onChange={(e) => handleChange(e)}
@@ -149,13 +155,15 @@ function Login() {
             </div>
 
             <div id="login-btn-container">
-              <button type="submit">Log In</button>
+              <button type="submit">{translations["login.log-in"]}</button>
             </div>
           </form>
 
           <div id="login-card-footer">
-            <a href="/signup">Register</a>
-            <a href="/forgot-password">Forgotten password?</a>
+            <a href="/signup">{translations["login.register"]}</a>
+            <a href="/forgot-password">
+              {translations["login.forgotten-password"]}
+            </a>
           </div>
         </div>
       </section>
@@ -165,9 +173,9 @@ function Login() {
           <h2>123 Fakturera</h2>
 
           <div id="login-footer-right">
-            <a href="#">Home</a>
-            <a href="#">Order</a>
-            <a href="#">Our Customers</a>
+            <a href="#">{translations["nav.home"]}</a>
+            <a href="#">{translations["nav.order"]}</a>
+            <a href="#">{translations["nav.our-customers"]}</a>
           </div>
         </div>
         <p id="login-footer-copy">

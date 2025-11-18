@@ -14,6 +14,41 @@ router.get("/health", (req, res) => {
   res.send({ status: "OK" });
 });
 
+const LANGUAGES = ["en", "sv"];
+router.post(
+  "/translations",
+  body("language").isIn(LANGUAGES),
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    const language = req.body.language;
+
+    try {
+      const translations = await prisma.translations.findMany({
+        where: { language },
+        select: {
+          key_id: true,
+          value: true,
+          translationKey: { select: { key: true } },
+        },
+      });
+
+      const result = translations.map((t) => ({
+        key: t.translationKey.key,
+        value: t.value,
+      }));
+
+      res.json(result);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: "Server error" });
+    }
+  }
+);
+
 router.post(
   "/login",
   body("email").isEmail().trim().notEmpty().normalizeEmail(),

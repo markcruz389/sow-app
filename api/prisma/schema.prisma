@@ -7,13 +7,48 @@ generator client {
   provider = "prisma-client-js"
 }
 
+enum language {
+  en
+  sv
+
+  @@map("language")
+}
+
+
 model User {
   id            Int       @id @default(autoincrement())
   email         String    @unique
   password_hash  String
   salt          String
+
   created_at     DateTime  @default(now()) @db.Timestamptz(6)
   updated_at     DateTime  @updatedAt @db.Timestamptz(6)
 
   @@map("users")
+}
+
+model TranslationKeys {
+  id            Int       @id @default(autoincrement())
+  key           String    @unique
+
+  created_at     DateTime  @default(now()) @db.Timestamptz(6)
+  updated_at     DateTime  @updatedAt @db.Timestamptz(6)
+
+  translations   Translations[] @relation("KeyTranslations")
+  @@map("translation_keys")
+}
+
+model Translations {
+  id                Int       @id @default(autoincrement())
+  key_id            Int
+  language          String
+  value             String
+
+  created_at        DateTime  @default(now()) @db.Timestamptz(6)
+  updated_at        DateTime  @updatedAt @db.Timestamptz(6)
+
+  translationKey    TranslationKeys @relation("KeyTranslations", fields: [key_id], references: [id])
+
+  @@unique([key_id, language])
+  @@map("translations")
 }
