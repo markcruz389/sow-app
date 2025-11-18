@@ -23,7 +23,7 @@ async function main() {
     update: {},
     create: {
       email,
-      passwordHash,
+      password_hash: passwordHash,
       salt,
     },
   });
